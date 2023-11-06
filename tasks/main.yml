@@ -1,0 +1,17 @@
+---
+- name: Check the presence of the kubens binary.
+  stat:
+    path: "{{ kubens_bin_path }}"
+  register: kubens_check
+
+- name: Check the kubens version.
+  shell: "{{ kubens_bin_path }} --version"
+  failed_when: false
+  changed_when: false
+  register: kubens_current_version
+
+- name: Install kubens v{{ kubens_version }}
+  include_tasks: install.yml
+  when: >-
+    not kubens_check.stat.exists
+    or kubens_version not in kubens_current_version.stdout

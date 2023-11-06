@@ -1,0 +1,19 @@
+---
+- name: Verify
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars_files:
+    - ../../defaults/main.yml
+
+  tasks:
+    - name: Check the kubens version.
+      command: "{{ kubens_bin_path }} --version"
+      changed_when: false
+      register: kubens_verify_version
+
+    - name: Verify kubens's version is {{ kubens_version }}
+      assert:
+        that:
+          - kubens_version in kubens_verify_version.stdout

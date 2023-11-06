@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars:
+    kubens_version: '0.9.1'
+
+  roles:
+    - m18unet.kubens
