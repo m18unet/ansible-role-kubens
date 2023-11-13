@@ -1,5 +1,5 @@
 ---
-# See available releases: https://github.com/ahmetb/kubens/releases
+# See available releases: https://github.com/ahmetb/kubectx/releases
 kubens_version: '0.9.5'
 kubens_platform: linux
 kubens_arch: x86_64
